@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata: 
+  name: redis
+
+spec:
+  replicas: 3
+  updateStrategy:
+          type: OnDelete
+  template:
+          metadata:
+                  labels:
+                          app: redis
+          spec:
+             containers:
+              - name: redis
+                image: redis
+
+  selector:
+     matchLabels:
+       app: redis          
