@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata: 
+  name: node-exporter
+spec:
+   updateStrategy:
+      rollingUpdate:
+        maxSurge: 0
+        maxUnavailable: 1
+      type: RollingUpdate   # Default strategy
+     
+   selector:
+       matchLabels:
+               app: node-exporter
+   template:
+       metadata:
+          labels:
+             app: node-exporter
+       spec:
+         containers:
+            - name: node-exporter
+              image: prom/node-exporter:v1.5.0       
