@@ -1,0 +1,15 @@
+apiVersion: v1
+data:
+  nginx.conf: "\r\nuser  nginx;\r\nworker_processes  auto;\r\n\r\nerror_log  /var/log/nginx/error.log
+    notice;\r\npid        /var/run/nginx.pid;\r\n\r\n\r\nevents {\r\n    worker_connections
+    \ 1024;\r\n}\r\n\r\n\r\nhttp {\r\n    include       /etc/nginx/mime.types;\r\n
+    \   default_type  application/octet-stream;\r\n\r\n    log_format  main  '$remote_addr
+    - $remote_user [$time_local] \"$request\" '\r\n                      '$status
+    $body_bytes_sent \"$http_referer\" '\r\n                      '\"$http_user_agent\"
+    \"$http_x_forwarded_for\"';\r\n\r\n    access_log  /var/log/nginx/access.log  main;\r\n\r\n
+    \   sendfile        on;\r\n    #tcp_nopush     on;\r\n\r\n    keepalive_timeout
+    \ 65;\r\n\r\n    #gzip  on;\r\n\r\n    include /etc/nginx/conf.d/*.conf;\r\n}\r\n"
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: nginx-config
