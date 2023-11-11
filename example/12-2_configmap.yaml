@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+     name: mysql-config
+
+data:
+     MYSQL_ROOT_PASSWORD: root
+     MYSQL_DATABASE: test     
+     TEST_CM: hello
+
+
