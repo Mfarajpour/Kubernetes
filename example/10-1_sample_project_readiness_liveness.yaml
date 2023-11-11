@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+   name: tondra
+spec:
+   replicas: 1
+   selector:
+           matchLabels:
+                   app: tondra
+   template:
+      metadata:
+          labels:
+                app: tondra
+      spec:          
+        containers:
+         - name: tondra
+           image: ssbostan/tondra:v1.1.0      
+           livenessProbe:
+               initialDelaySeconds: 3    
+               periodSeconds: 3
+               httpGet:
+                       port: 8080
+                       path: /livez  
+
+
+           readinessProbe:
+              initialDelaySeconds: 3    
+              periodSeconds: 3
+              httpGet:
+                   port: 8080
+                   path: /readyz
+             
+           ports:
+               - name: http
+                 containerPort: 8080      
