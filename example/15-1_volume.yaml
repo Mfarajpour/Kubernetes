@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+   name: alpine
+   labels: 
+       app: apine
+spec:
+   containers:
+     - name: alpine
+       image: alpine:3.18.4
+       command: ["sleep","infinity"]
+       volumeMounts:
+           - name: emptydir
+             mountPath: /empty
+           - name: host
+             mountPath: /host
+   volumes:
+      - name: emptydir
+        emptyDir: {}
+      - name: host
+        hostPath:
+            path: /     
