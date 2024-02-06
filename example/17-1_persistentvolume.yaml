@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+   name: nfs-volume
+   labels:
+      app.kubernetes.io/name: nfs
+      app.kubernetes.io/part-of: kubernetes-complete-reference
+      app.kubernetes.io/created-by: m
+spec:
+   accessModes:
+     - ReadWriteOnce
+     - ReadOnlyMany
+     - ReadWriteMany
+   capacity:
+      storage: 2Gi
+   storageClassName: ""
+   persistentVolumeReclaimPolicy: Recycle     
+   volumeMode: Filesystem        
+   nfs:
+      server: 192.168.56.19
+      path: /data
+      readOnly: no
+  
+              
