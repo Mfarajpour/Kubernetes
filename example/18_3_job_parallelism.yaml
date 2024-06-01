@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata: 
+   name: test
+
+spec: 
+  backoffLimit: 3 
+  completions: 3 
+  parallelism: 3
+  template:
+     spec:
+        restartPolicy: Never
+        containers:
+          - name: test
+            image: alpine:latest
+            command: ["true"]   
