@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: test4
+spec:
+    containers:
+      - name: test4
+        image: alpine:latest 
+        command: ["sleep", "1000"] 
+        resources:
+          requests:
+            cpu: 100m
+            memory: 50Mi
+          limits: 
+            cpu: 200m
+            memory: 200Mi   
