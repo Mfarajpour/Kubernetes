@@ -1,0 +1,12 @@
+docker login
+username
+password
+
+docker push username/imagename
+
+create secret:
+kubectl create secret docker-registry myreg --from-file=.dockerconfigjson=./.docker/config.json
+
+
+
+
