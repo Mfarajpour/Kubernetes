@@ -1,0 +1,7 @@
+#ephemeralcontainer
+debug nginx container:
+kubectl debug -it nginx --image=busybox:latest --target=nginx
+netstat -antp
+
+kubectl get po nginx -o yaml
+#see ephemeralcontainer
